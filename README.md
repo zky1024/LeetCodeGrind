@@ -1,2 +1,4 @@
 # LeetCodeGrind
-Recording my Leetcode practices
+Recording my LeetCode practices
+- Starting from Dec 21, 2023
+
