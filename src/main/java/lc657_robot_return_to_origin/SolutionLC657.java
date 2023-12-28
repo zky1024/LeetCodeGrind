@@ -1,7 +1,7 @@
 package lc657_robot_return_to_origin;
 
 
-public class Lc657Solution {
+public class SolutionLC657 {
     public boolean judgeCircle(String moves) {
         char[] moveArr = moves.toCharArray();
 

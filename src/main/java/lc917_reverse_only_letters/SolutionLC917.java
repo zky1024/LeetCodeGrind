@@ -3,7 +3,7 @@ package lc917_reverse_only_letters;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-class Solution {
+class SolutionLC917 {
     public String reverseOnlyLetters(String s) {
         char[] chars = s.toCharArray();
 

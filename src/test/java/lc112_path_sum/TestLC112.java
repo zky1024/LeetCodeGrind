@@ -6,7 +6,7 @@ public class TestLC112 {
 
     @Test
     public void test1() {
-        Solution solution = new Solution();
+        SolutionLC112 solution = new SolutionLC112();
 
     }
 }

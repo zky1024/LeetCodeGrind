@@ -1,7 +1,7 @@
 package lc112_path_sum;
 
 
-class Solution {
+class SolutionLC112 {
 
     public boolean hasPathSum(TreeNode root, int targetSum) {
         if (null == root) {

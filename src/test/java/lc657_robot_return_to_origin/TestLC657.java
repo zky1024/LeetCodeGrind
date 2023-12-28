@@ -4,11 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class TestLc657 {
+public class TestLC657 {
 
     @Test
     public void Test1() {
-        Lc657Solution solution = new Lc657Solution();
+        SolutionLC657 solution = new SolutionLC657();
         String moves = "UDRLRLUDLR";
         boolean result = solution.judgeCircle(moves);
         System.out.println(result);
@@ -17,7 +17,7 @@ public class TestLc657 {
 
     @Test
     public void Test2() {
-        Lc657Solution solution = new Lc657Solution();
+        SolutionLC657 solution = new SolutionLC657();
         String moves = "LLLRRRR";
         boolean result = solution.judgeCircle(moves);
         System.out.println(result);
