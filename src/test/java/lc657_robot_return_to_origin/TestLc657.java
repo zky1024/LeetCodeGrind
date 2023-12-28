@@ -3,10 +3,7 @@ package lc657_robot_return_to_origin;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * @author Kai
- * @since 2023/12/28 14:34
- */
+
 public class TestLc657 {
 
     @Test
