@@ -10,51 +10,91 @@ import java.util.Collections;
 
 public class LCUtil {
 
-    public static String generateFolderName(String s) {
+    private static String generateFolderName(String s) {
         return "lc" + s.toLowerCase().replace(" ", "_").replace(".", "");
     }
 
-
-    public static String generateSolutionName(String s) {
+    private static String generateSolutionName(String s) {
         return "SolutionLC" + s.replaceAll("[^0-9]", "");
     }
 
-
-    public static String generateTestName(String s) {
+    private static String generateTestName(String s) {
         return "TestLC" + s.replaceAll("[^0-9]", "");
     }
 
     public static void main(String[] args) {
-        String input = "2062. Count Vowel Substrings of a String";
-        // generate names
+        String input = "217. Contains Duplicate";
+        // generate folders and files
+        gen(input);
+    }
+
+    private static void gen(String input) {
+        String nm = "";
+
         String folderName = generateFolderName(input);
         String solutionName = generateSolutionName(input);
         String testName = generateTestName(input);
 
         // Absolute paths for folder and files
-        String baseDir = "E:\\LeetCodeGrind\\src\\main\\java\\";
-        String testDir = "E:\\LeetCodeGrind\\src\\test\\java\\";
-        Path folderPath = Paths.get(baseDir + folderName);
-        Path solutionPath = Paths.get(baseDir + folderName + "\\" + solutionName + ".java");
-        Path testFolderPath = Paths.get(testDir + folderName);
-        Path testFilePath = Paths.get(testDir + folderName + "\\" + testName + ".java");
+        // check operating system and change path accordingly
+        String baseDir = "";
+        String testDir = "";
+
+        if (System.getProperty("os.name").startsWith("Mac")) {
+            // for mac
+            baseDir = "/Users/" + nm +"/IdeaProjects/LeetCodeGrind/src/main/java/"; // for mac
+            testDir = "/Users/" + nm +"/IdeaProjects/LeetCodeGrind/src/test/java/"; // for mac
+        } else {
+            // for windows
+            baseDir = "E:\\LeetCodeGrind\\src\\main\\java\\"; // for windows
+            testDir = "E:\\LeetCodeGrind\\src\\test\\java\\"; // for windows
+        }
+
+
+        String solutionFolderPathString = baseDir + folderName;
+        String testFolderPathString = testDir + folderName;
+        System.out.println("solutionFolderPathString: " + solutionFolderPathString);
+        System.out.println("testFolderPathString: " + testFolderPathString);
+        Path solutionFolderPath = Paths.get(solutionFolderPathString);
+        Path testFolderPath = Paths.get(testFolderPathString);
+
+        String solutionFilePathString ="";
+        String testFilePathString = "";
+        Path solutionFilePath;
+        Path testFilePath;
+        if (System.getProperty("os.name").startsWith("Mac")) {
+            // for mac
+            solutionFilePathString = solutionFolderPathString + "/" + solutionName + ".java";
+            testFilePathString = testFolderPathString + "/" + testName + ".java";
+        } else {
+            // for windows
+            solutionFilePathString = solutionFolderPathString + "\\" + solutionName + ".java";
+            testFilePathString = testFolderPathString + "\\" + testName + ".java";
+        }
+        System.out.println("solutionFilePathString: " + solutionFilePathString);
+        System.out.println("testFilePathString: " + testFilePathString);
+
+        solutionFilePath = Paths.get(solutionFilePathString);
+        testFilePath = Paths.get(testFilePathString);
 
 
         try {
             // create folder on path: src/main/java/folderName
-            Files.createDirectories(folderPath);
+            System.out.printf("Creating folder: %s%n", solutionFolderPath);
+            Files.createDirectories(solutionFolderPath);
 
             // create file on path: src/main/java/folderName/solutionName.java and write initial code
-            Files.createFile(solutionPath);
+            Files.createFile(solutionFilePath);
             String solutionContent = "package " + folderName + ";" + "\n" + "\n" +
                     "/**" + "\n" +
-                    " * "+ input + "\n" +
-                    " *"+ "\n" +
-                    " * @author Kai"+ "\n" +
-                    " * @since " +   new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date())  + "\n" +
+                    " * " + input + "\n" +
+                    " *" + "\n" +
+                    " * @since " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()) + "\n" +
                     " */" + "\n" +
                     "public class " + solutionName + " { \n    // Write your solution code here\n}";
-            Files.write(solutionPath, Collections.singletonList(solutionContent));
+            Files.write(solutionFilePath, Collections.singletonList(solutionContent));
+
+
 
             // create folder on path: src/test/java/folderName
             Files.createDirectories(testFolderPath);
@@ -62,12 +102,11 @@ public class LCUtil {
             // create test file and write initial code
             Files.createFile(testFilePath);
             String testContent = "package " + folderName + ";\n\n" +
-                    "import org.junit.Test;"+ "\n" + "\n" +
+                    "import org.junit.Test;" + "\n" + "\n" +
                     "/**" + "\n" +
-                    " * "+ input + "\n" +
-                    " *"+ "\n" +
-                    " * @author Kai"+ "\n" +
-                    " * @since " +   new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date())  + "\n" +
+                    " * " + input + "\n" +
+                    " *" + "\n" +
+                    " * @since " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()) + "\n" +
                     " */" + "\n" +
                     "public class " + testName + " {\n\n" +
                     "    @Test\n" +
